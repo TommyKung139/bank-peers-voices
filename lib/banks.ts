@@ -9,6 +9,14 @@ export type Bank = {
 
 export const BANKS: Bank[] = [
   {
+    id: "ctbc",
+    name: "中國信託銀行",
+    shortName: "中信",
+    color: "#e4632c",
+    googlePlayId: "com.chinatrust.mobilebank",
+    appStoreId: "417698185",
+  },
+  {
     id: "cathay",
     name: "國泰世華銀行",
     shortName: "國泰",
@@ -17,20 +25,12 @@ export const BANKS: Bank[] = [
     appStoreId: "373500505",
   },
   {
-    id: "esun",
-    name: "玉山銀行",
-    shortName: "玉山",
-    color: "#00954e",
-    googlePlayId: "com.esunbank",
-    appStoreId: "405033836",
-  },
-  {
-    id: "ctbc",
-    name: "中國信託銀行",
-    shortName: "中信",
-    color: "#e4632c",
-    googlePlayId: "com.chinatrust.mobilebank",
-    appStoreId: "417698185",
+    id: "taishin",
+    name: "台新銀行 Richart",
+    shortName: "台新",
+    color: "#8a3ab9",
+    googlePlayId: "tw.com.taishinbank.richart",
+    appStoreId: "1079733142",
   },
   {
     id: "fubon",
@@ -41,12 +41,12 @@ export const BANKS: Bank[] = [
     appStoreId: "6479990131",
   },
   {
-    id: "taishin",
-    name: "台新銀行 Richart",
-    shortName: "台新",
-    color: "#8a3ab9",
-    googlePlayId: "tw.com.taishinbank.richart",
-    appStoreId: "1079733142",
+    id: "esun",
+    name: "玉山銀行",
+    shortName: "玉山",
+    color: "#00954e",
+    googlePlayId: "com.esunbank",
+    appStoreId: "405033836",
   },
   {
     id: "linebank",

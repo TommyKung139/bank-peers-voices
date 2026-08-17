@@ -1,4 +1,5 @@
 import Markdown from "@/components/Markdown";
+import Collapsible from "@/components/Collapsible";
 import type { AISummary } from "@/lib/types";
 
 export default function AISummaryBox({ summary }: { summary: AISummary }) {
@@ -14,7 +15,9 @@ export default function AISummaryBox({ summary }: { summary: AISummary }) {
   }
   return (
     <div>
-      <Markdown text={summary.summary} />
+      <Collapsible collapsedLines={4}>
+        <Markdown text={summary.summary} />
+      </Collapsible>
       <p className="mt-2 text-[11px] text-[var(--muted)]">
         AI 摘要產生時間：{new Date(summary.generatedAt).toLocaleString("zh-TW")}
       </p>

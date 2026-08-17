@@ -4,6 +4,7 @@ import type { AISummary, StoreAppInfo, StoreReview } from "@/lib/types";
 
 const REVALIDATE_SECONDS = 6 * 60 * 60; // 6 hours
 const MODEL = "gemini-2.5-flash";
+const LENGTH_LIMIT = "請務必精簡，全文（含標題與條列符號）總長度不超過500字。";
 
 function getClient(): GoogleGenAI | null {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -24,6 +25,7 @@ async function callGemini(prompt: string): Promise<AISummary> {
     const response = await client.models.generateContent({
       model: MODEL,
       contents: prompt,
+      config: { maxOutputTokens: 700 },
     });
     const text = (response.text ?? "").trim();
     return { summary: text, generatedAt: new Date().toISOString() };
@@ -59,7 +61,7 @@ ${formatReviews("Google Play", googlePlayReviews)}
 
 ${formatReviews("App Store", appStoreReviews)}
 
-請直接輸出摘要內容，不需要開場白，使用 Markdown 條列格式。`;
+請直接輸出摘要內容，不需要開場白，使用 Markdown 條列格式。${LENGTH_LIMIT}`;
   return callGemini(prompt);
 }
 
@@ -82,7 +84,7 @@ ${formatFeatureInfo("Google Play", googlePlayInfo)}
 
 ${formatFeatureInfo("App Store", appStoreInfo)}
 
-請直接輸出摘要內容，不需要開場白，使用 Markdown 條列格式。`;
+請直接輸出摘要內容，不需要開場白，使用 Markdown 條列格式。${LENGTH_LIMIT}`;
   return callGemini(prompt);
 }
 
@@ -106,7 +108,7 @@ async function doSummarizeCrossBankReviews(data: BankReviewData[]): Promise<AISu
 
 ${body}
 
-請直接輸出摘要內容，使用 Markdown 條列格式，適度使用小標題。`;
+請直接輸出摘要內容，使用 Markdown 條列格式，適度使用小標題。${LENGTH_LIMIT}`;
   return callGemini(prompt);
 }
 
@@ -127,7 +129,7 @@ async function doSummarizeCrossBankFeatures(data: BankFeatureData[]): Promise<AI
 
 ${body}
 
-請直接輸出摘要內容，使用 Markdown 條列格式，適度使用小標題。`;
+請直接輸出摘要內容，使用 Markdown 條列格式，適度使用小標題。${LENGTH_LIMIT}`;
   return callGemini(prompt);
 }
 

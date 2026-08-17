@@ -4,6 +4,7 @@ import { getGooglePlayInfo } from "@/lib/scrapers/googlePlay";
 import { getAppStoreInfo } from "@/lib/scrapers/appStore";
 import { summarizeBankFeatures } from "@/lib/ai/summarize";
 import AISummaryBox from "@/components/AISummaryBox";
+import Collapsible from "@/components/Collapsible";
 import { SummarySkeleton } from "@/components/Skeletons";
 
 function formatDate(d: string) {
@@ -47,9 +48,11 @@ export default async function BankFeatureCard({ bank }: { bank: Bank }) {
             <>
               <p className="text-xs">版本 {gplayInfo.info.version}</p>
               <p className="text-[11px] text-[var(--muted)] mb-2">更新日：{formatDate(gplayInfo.info.updated)}</p>
-              <p className="text-xs leading-relaxed whitespace-pre-line line-clamp-6 text-[var(--foreground)]/85">
-                {gplayInfo.info.releaseNotes || "本次更新未提供說明"}
-              </p>
+              <Collapsible collapsedLines={4} lineHeightRem={1.4}>
+                <p className="text-xs leading-relaxed whitespace-pre-line text-[var(--foreground)]/85">
+                  {gplayInfo.info.releaseNotes || "本次更新未提供說明"}
+                </p>
+              </Collapsible>
             </>
           ) : (
             <p className="text-xs text-[var(--negative)]">資料抓取失敗</p>
@@ -61,9 +64,11 @@ export default async function BankFeatureCard({ bank }: { bank: Bank }) {
             <>
               <p className="text-xs">版本 {appstoreInfo.info.version}</p>
               <p className="text-[11px] text-[var(--muted)] mb-2">更新日：{formatDate(appstoreInfo.info.updated)}</p>
-              <p className="text-xs leading-relaxed whitespace-pre-line line-clamp-6 text-[var(--foreground)]/85">
-                {appstoreInfo.info.releaseNotes || "本次更新未提供說明"}
-              </p>
+              <Collapsible collapsedLines={4} lineHeightRem={1.4}>
+                <p className="text-xs leading-relaxed whitespace-pre-line text-[var(--foreground)]/85">
+                  {appstoreInfo.info.releaseNotes || "本次更新未提供說明"}
+                </p>
+              </Collapsible>
             </>
           ) : (
             <p className="text-xs text-[var(--negative)]">資料抓取失敗</p>
