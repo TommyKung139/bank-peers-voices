@@ -19,7 +19,7 @@ export default function AISummaryBox({ summary }: { summary: AISummary }) {
         <Markdown text={summary.summary} />
       </Collapsible>
       <p className="mt-2 text-[11px] text-[var(--muted)]">
-        AI 摘要產生時間：{new Date(summary.generatedAt).toLocaleString("zh-TW")}
+        AI 摘要產生時間：{new Date(summary.generatedAt).toLocaleString("zh-TW", { timeZone: "Asia/Taipei" })}
       </p>
     </div>
   );

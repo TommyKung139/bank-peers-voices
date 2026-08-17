@@ -25,7 +25,7 @@ async function callGemini(prompt: string): Promise<AISummary> {
     const response = await client.models.generateContent({
       model: MODEL,
       contents: prompt,
-      config: { maxOutputTokens: 700 },
+      config: { maxOutputTokens: 2048, thinkingConfig: { thinkingBudget: 0 } },
     });
     const text = (response.text ?? "").trim();
     return { summary: text, generatedAt: new Date().toISOString() };

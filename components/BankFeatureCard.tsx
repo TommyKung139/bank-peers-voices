@@ -11,7 +11,7 @@ function formatDate(d: string) {
   if (!d) return "未知";
   const date = new Date(d);
   if (isNaN(date.getTime())) return d;
-  return date.toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit" });
+  return date.toLocaleDateString("zh-TW", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Taipei" });
 }
 
 async function AISection({ bank }: { bank: Bank }) {
