@@ -1,11 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const TABS = [
   { key: "reviews", label: "用戶評論", icon: "💬" },
   { key: "features", label: "競品內容", icon: "🧩" },
 ] as const;
 
-export default function TabNav({ active }: { active: string }) {
+export default function TabNav() {
+  const searchParams = useSearchParams();
+  const active = searchParams.get("tab") === "features" ? "features" : "reviews";
+
   return (
     <nav className="flex gap-2 border-b border-[var(--border)] px-4 sm:px-8">
       {TABS.map((tab) => {

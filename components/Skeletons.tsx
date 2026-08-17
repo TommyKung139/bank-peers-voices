@@ -11,10 +11,16 @@ export function CardSkeleton() {
 
 export function SummarySkeleton() {
   return (
-    <div className="animate-pulse space-y-2">
-      <div className="h-3.5 w-11/12 rounded bg-[var(--surface-muted)]" />
-      <div className="h-3.5 w-4/5 rounded bg-[var(--surface-muted)]" />
-      <div className="h-3.5 w-2/3 rounded bg-[var(--surface-muted)]" />
+    <div className="space-y-2">
+      <div className="flex items-center gap-1.5 text-[11px] text-[var(--accent)]">
+        <span className="h-3 w-3 rounded-full border-2 border-[var(--accent)] border-t-transparent animate-spin" />
+        AI 分析中…
+      </div>
+      <div className="animate-pulse space-y-2">
+        <div className="h-3.5 w-11/12 rounded bg-[var(--surface-muted)]" />
+        <div className="h-3.5 w-4/5 rounded bg-[var(--surface-muted)]" />
+        <div className="h-3.5 w-2/3 rounded bg-[var(--surface-muted)]" />
+      </div>
     </div>
   );
 }
